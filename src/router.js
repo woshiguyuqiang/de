@@ -11,11 +11,17 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      redirect:'/about'
     },
     {
       path: '/about',
       name: 'about',
+      meta:{flag:true},
+      beforeEnter(to,from,next){
+        console.log(to.meta)
+        next()
+      },
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
